@@ -34,13 +34,13 @@
         let y = canvas.height-30
         let dx = 2;
         let dy = -2;
-        let ballRadius = 20;
-        
+        let ballRadius = 30;
+        let color = 50;
        
         function drawBall(){
             ctx.beginPath();
             ctx.arc(x, y, ballRadius, 0, Math.PI*2); //x和y是球的圓心位置
-            ctx.fillStyle = "#0095DD";
+            ctx.fillStyle = `hsl(${color}, 100%, 50%)`;
             ctx.fill();
             ctx.closePath();
         }
@@ -51,9 +51,11 @@
             // 而不是球的一半到了碰到牆才轉向
             if(y+dy<ballRadius || y+dy>canvas.height-ballRadius){
                 dy=-dy;
+                color = Math.floor(Math.random()*361);
             }
             if(x+dx<ballRadius || x+dx>canvas.width-ballRadius){
-                dx=-dx
+                dx=-dx;
+                color = Math.floor(Math.random()*361);
             }
             x+=dx;
             y+=dy;   
